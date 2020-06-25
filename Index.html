@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Knockout Js - project</title>
+    
+    <link rel="stylesheet" href="style.css" title="Style css" type="text/css" />
+</head>
+
+<body>
+  <!-- First name:
+  <div class="firstName" data-bind="text: firstName"></div>
+  
+  Last name
+  <div class="firstName" data-bind="text: lastName"></div>
+  
+  Fullname
+    <div class="fullName" data-bind="text: userFullName"></div>
+ 
+  
+  <input data-bind="value: firstName" />
+  <input data-bind="value: lastName" />
+  
+  <button data-bind="click: captalizeLastName">Go caps</button>
+  -->
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Passenger name</th>
+        <th>Meal</th>
+        <th>Surcharge</th>
+        <th></th>
+      </tr>
+    </thead>
+    <!-- Todo: Generate table body -->
+    <tbody data-bind="foreach: seats">
+      <tr>
+        <td><input data-bind="value: name" /></td>
+        <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
+        <td data-bind="text: formattedPrice"></td>
+        <td><a href="#" data-bind="click: $root.removeSeat">Remove</a></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h2> Your seat reservation 
+    (<span data-bind="text: seats().length"></span>)
+  </h2>
+  
+  <h3 data-bind="visible: $root.totalSurcharge() > 0">
+    $<span data-bind="text: $root.totalSurcharge().toFixed(2)"></span>
+  </h3>
+  
+  <button data-bind="click: addSeat, enable: seats().length < 5">add seat</button>
+  
+  <script src="ko.js" type="text/javascript" charset="utf-8">
+  </script>
+  <script src="scripts.js" type="text/javascript" charset="utf-8">
+  </script>
+</body>
+
+</html>
