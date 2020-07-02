@@ -34,7 +34,6 @@ class SeatReservation {
       var price = self.meal().price;
       return price ? "$" + price.toFixed(0) : "None";
     });
-    
   }
 }
 
@@ -42,7 +41,8 @@ class SeatReservation {
 class ReservationsViewModel {
   constructor() {
     var self = this;
-
+    self.newName = ko.observable();
+    
     // Non-editable catalog data - would come from the server
     self.availableMeals = [
       { mealName: "Standard (sandwich)", price: 0 },
@@ -57,7 +57,7 @@ class ReservationsViewModel {
             ]);
             
      self.addSeat = function() {
-       self.seats.push(new SeatReservation("Insert a name", self.availableMeals[0]));
+       self.seats.push(new SeatReservation(self.newName(), self.availableMeals[0]));
      };
      
      self.removeSeat = function(seat) { 
